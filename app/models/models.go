@@ -1,7 +1,7 @@
 package models
 
 import (
-	setting2 "blog-api/pkg/setting"
+	setting "blog-api/pkg/setting"
 	"fmt"
 	"log"
 
@@ -22,7 +22,7 @@ func init() {
 		dbType, dbName, user, password, host, tablePrefix string
 	)
 
-	sec, err := setting2.Cfg.GetSection("database")
+	sec, err := setting.Cfg.GetSection("database")
 	if err != nil {
 		log.Fatal(2, "Fail to get section 'database': %v", err)
 	}
@@ -52,7 +52,8 @@ func init() {
 
 	// 创建model相应数据表
 	db.SingularTable(true)
-	//db.CreateTable(&Banner{},&User{})
+	db.CreateTable(&Banner{},&User{})
+
 	// 打印日志
 	db.LogMode(true)
 

@@ -82,7 +82,7 @@ func InitRouter() {
 		//	news.DELETE("",api.DeleteNew)
 		//}
 	}
-	router.StaticFS("/static", http.Dir("./static"))
+	router.StaticFS("/public/file", http.Dir("/file"))
 	//router.StaticFile("/static/file", "../static/file/cacheArea/ZQEUANJFFSPVOHLINGOE.jpg")
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 

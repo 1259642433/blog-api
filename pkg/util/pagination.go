@@ -6,13 +6,17 @@ import (
 )
 
 type PageVar struct{
-	page int
-	size int
+	Page int
+	Size int
 }
 
 func GetPageVar(c *gin.Context) (result PageVar) {
-	result.page, _ = com.StrTo(c.Query("page")).Int()
-	result.size,_ = com.StrTo(c.Query("size")).Int()
+	if result.Page, _ = com.StrTo(c.Query("page")).Int();result.Page == 0{
+		result.Page = 1
+	}
+	if result.Size, _ = com.StrTo(c.Query("size")).Int();result.Size == 0{
+		result.Size = 10
+	}
 	return
 }
 
